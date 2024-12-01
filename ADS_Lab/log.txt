@@ -1,0 +1,185 @@
+The generated cost matrix for 3 cities:
+0       25      48
+25      0       39
+48      39      0
+The starting city: 2
+Exact method: Minimum cost of the path: 112
+Exact method: Time taken: 0 seconds
+Greedy method: Minimum cost of the path: 112
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 4 cities:
+0       25      48      39
+25      0       6       70
+48      6       0       24
+39      70      24      0
+The starting city: 1
+Exact method: Minimum cost of the path: 94
+Exact method: Time taken: 0 seconds
+Greedy method: Minimum cost of the path: 94
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 5 cities:
+0       25      48      39      6
+25      0       70      24      18
+48      70      0       91      19
+39      24      91      0       43
+6       18      19      43      0
+The starting city: 1
+Exact method: Minimum cost of the path: 148
+Exact method: Time taken: 0 seconds
+Greedy method: Minimum cost of the path: 224
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 6 cities:
+0       25      48      39      6       70
+25      0       24      18      91      19
+48      24      0       43      82      63
+39      18      43      0       57      37
+6       91      82      57      0       26
+70      19      63      37      26      0
+The starting city: 3
+Exact method: Minimum cost of the path: 157
+Exact method: Time taken: 0 seconds
+Greedy method: Minimum cost of the path: 160
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 7 cities:
+0       25      48      39      6       70      24
+25      0       18      91      19      43      82
+48      18      0       63      57      37      26
+39      91      63      0       70      30      4
+6       19      57      70      0       71      85
+70      43      37      30      71      0       28
+24      82      26      4       85      28      0
+The starting city: 2
+Exact method: Minimum cost of the path: 138
+Exact method: Time taken: 0 seconds
+Greedy method: Minimum cost of the path: 138
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 8 cities:
+0       25      48      39      6       70      24      18
+25      0       91      19      43      82      63      57
+48      91      0       37      26      70      30      4
+39      19      37      0       71      85      28      65
+6       43      26      71      0       37      35      88
+70      82      70      85      37      0       63      11
+24      63      30      28      35      63      0       12
+18      57      4       65      88      11      12      0
+The starting city: 2
+Exact method: Minimum cost of the path: 160
+Exact method: Time taken: 0.001 seconds
+Greedy method: Minimum cost of the path: 220
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 9 cities:
+0       25      48      39      6       70      24      18      91
+25      0       19      43      82      63      57      37      26
+48      19      0       70      30      4       71      85      28
+39      43      70      0       65      37      35      88      63
+6       82      30      65      0       11      12      3       89
+70      63      4       37      11      0       58      50      68
+24      57      71      35      12      58      0       86      1
+18      37      85      88      3       50      86      0       29
+91      26      28      63      89      68      1       29      0
+The starting city: 1
+Exact method: Minimum cost of the path: 156
+Exact method: Time taken: 0.003 seconds
+Greedy method: Minimum cost of the path: 186
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 10 cities:
+0       25      48      39      6       70      24      18      91      19
+25      0       43      82      63      57      37      26      70      30
+48      43      0       4       71      85      28      65      37      35
+39      82      4       0       88      63      11      12      3       89
+6       63      71      88      0       58      50      68      86      1
+70      57      85      63      58      0       29      89      23      46
+24      37      28      11      50      29      0       19      99      65
+18      26      65      12      68      89      19      0       56      32
+91      70      37      3       86      23      99      56      0       98
+19      30      35      89      1       46      65      32      98      0
+The starting city: 7
+Exact method: Minimum cost of the path: 171
+Exact method: Time taken: 0.032 seconds
+Greedy method: Minimum cost of the path: 236
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 11 cities:
+0       25      48      39      6       70      24      18      91      19      43
+25      0       82      63      57      37      26      70      30      4       71
+48      82      0       85      28      65      37      35      88      63      11
+39      63      85      0       12      3       89      58      50      68      86
+6       57      28      12      0       1       29      89      23      46      19
+70      37      65      3       1       0       99      65      56      32      98
+24      26      37      89      29      99      0       68      74      38      50
+18      70      35      58      89      65      68      0       71      59      84
+91      30      88      50      23      56      74      71      0       18      13
+19      4       63      68      46      32      38      59      18      0       94
+43      71      11      86      19      98      50      84      13      94      0
+The starting city: 9
+Exact method: Minimum cost of the path: 197
+Exact method: Time taken: 0.309 seconds
+Greedy method: Minimum cost of the path: 254
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 12 cities:
+0       29      96      3       1       85      51      30      64      30      95      35
+29      0       7       28      15      19      40      80      29      2       42      75
+96      7       0       77      52      50      23      54      52      88      96      6
+3       28      77      0       59      19      31      37      63      5       45      4
+1       15      52      59      0       25      46      69      30      56      79      74
+85      19      50      19      25      0       16      3       6       56      73      77
+51      40      23      31      46      16      0       24      33      96      43      26
+30      80      54      37      69      3       24      0       65      33      97      60
+64      29      52      63      30      6       33      65      0       61      81      28
+30      2       88      5       56      56      96      33      61      0       83      95
+95      42      96      45      79      73      43      97      81      83      0       58
+35      75      6       4       74      77      26      60      28      95      58      0
+The starting city: 10
+Exact method: Minimum cost of the path: 188
+Exact method: Time taken: 3.531 seconds
+Greedy method: Minimum cost of the path: 243
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 13 cities:
+0       38      74      59      55      60      31      67      50      29      19      91      39
+38      0       8       86      59      86      98      69      94      80      54      52      61
+74      8       0       94      64      62      41      79      6       25      62      93      56
+59      86      94      0       58      86      32      12      12      62      59      81      60
+55      59      64      58      0       55      51      72      23      92      42      43      47
+60      86      62      86      55      0       96      45      47      83      58      56      49
+31      98      41      32      51      96      0       30      55      37      33      45      14
+67      69      79      12      72      45      30      0       3       39      28      5       67
+50      94      6       12      23      47      55      3       0       85      98      72      49
+29      80      25      62      92      83      37      39      85      0       61      56      68
+19      54      62      59      42      58      33      28      98      61      0       37      31
+91      52      93      81      43      56      45      5       72      56      37      0       36
+39      61      56      60      47      49      14      67      49      68      31      36      0
+The starting city: 0
+Exact method: Minimum cost of the path: 334
+Exact method: Time taken: 43.091 seconds
+Greedy method: Minimum cost of the path: 423
+Greedy method: Time taken: 0 seconds
+
+The generated cost matrix for 14 cities:
+0       79      3       55      2       35      41      31      49      99      96      31      33      8
+79      0       82      82      60      23      22      79      32      1       73      6       41      100
+3       82      0       37      5       37      20      15      31      69      67      68      47      18
+55      82      37      0       5       48      52      6       88      2       75      11      47      85
+2       60      5       5       0       90      80      6       87      16      72      61      31      74
+35      23      37      48      90      0       51      60      81      20      56      63      43      54
+41      22      20      52      80      51      0       43      93      44      4       70      75      99
+31      79      15      6       6       60      43      0       48      35      42      45      83      80
+49      32      31      88      87      81      93      48      0       84      100     83      23      23
+99      1       69      2       16      20      44      35      84      0       76      64      75      46
+96      73      67      75      72      56      4       42      100     76      0       82      23      71
+31      6       68      11      61      63      70      45      83      64      82      0       86      54
+33      41      47      47      31      43      75      83      23      75      23      86      0       35
+8       100     18      85      74      54      99      80      23      46      71      54      35      0
+The starting city: 2
+Exact method: Minimum cost of the path: 190
+Exact method: Time taken: 580 seconds
+Greedy method: Minimum cost of the path: 268
+Greedy method: Time taken: 0 seconds
