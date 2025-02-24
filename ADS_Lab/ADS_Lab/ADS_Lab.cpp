@@ -9,8 +9,6 @@ using std::min;
 
 // Генерация симметричной матрицы стоимостей маршрутов
 void generateCostMatrix(int** graph, int n, int maxCost) {
-    srand(static_cast<unsigned int>(time(0)));
-
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (i == j) {
@@ -81,6 +79,7 @@ int greedyTSP(int** graph, int start, int n) {
 }
 
 int main() {
+    srand(static_cast<unsigned int>(time(0)));
     const int minCities = 3;
     const int maxCities = 14;
     const int maxCost = 100;
