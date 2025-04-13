@@ -9,7 +9,7 @@ std::vector<int> buildBadCharacterTable(const std::string& pattern) {
     return badChar;
 }
 
-int boyerMooreSearch(const std::string text, const std::string pattern) {
+int boyerMooreSearchFirst(const std::string text, const std::string pattern) {
     int textSize = text.size();
     int patternSize = pattern.size();
 
@@ -39,25 +39,34 @@ int boyerMooreSearch(const std::string text, const std::string pattern) {
 std::vector<int> boyerMooreSearchAll(const std::string text, const std::string pattern, int from = 0, int to = -1) {
     std::vector<int> result;
     int textSize = text.size();
+    int patternSize = pattern.size();
 
-    if (from < textSize) {
+    if (from > textSize) {
         return result;
     }
-    if (from > 0) {
-        from = 0;
+    if (from < 0) {
+        from = textSize + from;
     }
-    if (to < 0 || to < from || to > textSize) {
-        to = textSize;
+    if (to < 0) {
+        to = textSize + to;
+    }
+    if (to <= from) {
+        return result;
     }
 
-    std::vector<int> result;
-    int pos = from;
-    while (true) {
-        pos = boyerMooreSearch(text.substr(pos, to), pattern);
-        if (pos == -1) {
+    int currentPos = from;
+    int substrLength = to - from + 1;
+    while (substrLength >= patternSize) {
+        int foundPos = boyerMooreSearchFirst(text.substr(currentPos, substrLength), pattern);
+
+        if (foundPos == -1) {
             break;
         }
-        result.push_back(pos);
+
+        result.push_back(currentPos + foundPos);
+
+        currentPos += foundPos + 1;
+        substrLength = to - currentPos + 1;
     }
     return result;
 }
@@ -67,8 +76,8 @@ int main()
 	std::string text = { "std::move_iterator is an iterator adaptor which behaves exactly like the underlying iterator" };
 	std::string pattern = { "tor" };
 
-    int resultBoyerMooreSearch = boyerMooreSearch(text, pattern);
-    std::vector<int> resultBoyerMooreSearchAll = boyerMooreSearchAll(text, pattern);
+    int resultBoyerMooreSearch = boyerMooreSearchFirst(text, pattern);
+    std::vector<int> resultBoyerMooreSearchAll = boyerMooreSearchAll(text, pattern, -17, -12);
     
     std::cout << "text: " << text << std::endl;
     std::cout << "pattern: " << pattern << std::endl;
