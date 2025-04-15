@@ -25,15 +25,37 @@ void generateFile(const std::string& filename, int size, int min, int max) {
     std::cout << "Generated " << filename << " with " << size << " elements." << std::endl;
 }
 
+std::vector<int> loadFile(const std::string& filename) {
+    std::ifstream in(filename);
+    std::vector<int> vector;
+    int number;
+    while (in >> number) {
+        vector.push_back(number);
+    }
+    return vector;
+}
+
+void shellSort(std::vector<int>& vector) {
+    int vectorSize = vector.size();
+
+    for (int gap = vectorSize / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < vectorSize; i++) {
+            int temp = vector[i];
+            int j;
+            for (j = i; j >= gap && vector[j - gap] > temp; j -= gap) {
+                vector[j] = vector[j - gap];
+            }
+            vector[j] = temp;
+        }
+    }
+}
+
 int main()
 {
-	std::vector<int> sizes = { 10000, 100000, 1000000 };
-	std::vector<int> values = { 10, 1000, 100000 };
-
-	for (int size : sizes) {
-		for (int value : values) {
-			std::string filename = std::to_string(size) + "_numbers_in_range_" + std::to_string(value) + ".txt";
-			generateFile(filename, size, value * -1, value);
-		}
-	}
+    std::vector<int> vector = loadFile("1000000_numbers_in_range_100000.txt");
+    shellSort(vector);
+    //for (int n : vector) {
+    //    std::cout << n << " ";
+    //}
+    std::cout << std::endl << isSorted(vector);
 }
