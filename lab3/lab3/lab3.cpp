@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <random>
 #include <fstream>
+#include <chrono>
+#include <iomanip>
 
 bool isSorted(const std::vector<int>& vector) {
 	return std::is_sorted(vector.begin(), vector.end());
@@ -71,8 +73,8 @@ void shellSortKnuth(std::vector<int>& vector) {
     }
 }
 
-void shellSortSedgewick(std::vector<int>& arr) {
-    int n = arr.size();
+void shellSortSedgewick(std::vector<int>& vector) {
+    int n = vector.size();
 
     std::vector<int> gaps;
     int k = 0;
@@ -92,22 +94,101 @@ void shellSortSedgewick(std::vector<int>& arr) {
     for (int s = gaps.size() - 1; s >= 0; s--) {
         int gap = gaps[s];
         for (int i = gap; i < n; i++) {
-            int temp = arr[i];
+            int temp = vector[i];
             int j;
-            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
-                arr[j] = arr[j - gap];
+            for (j = i; j >= gap && vector[j - gap] > temp; j -= gap) {
+                vector[j] = vector[j - gap];
             }
-            arr[j] = temp;
+            vector[j] = temp;
         }
     }
 }
 
-int main()
-{
-    std::vector<int> vector = loadFile("10000_numbers_in_range_100000.txt");
-    shellSortSedgewick(vector);
-    //for (int n : vector) {
-    //    std::cout << n << " ";
-    //}
-    std::cout << std::endl << isSorted(vector);
+int main() {
+    std::vector<std::string> filenames = {
+        "10000_numbers_in_range_10.txt",
+        "10000_numbers_in_range_1000.txt",
+        "10000_numbers_in_range_100000.txt",
+        "100000_numbers_in_range_10.txt",
+        "100000_numbers_in_range_1000.txt",
+        "100000_numbers_in_range_100000.txt",
+        "1000000_numbers_in_range_10.txt",
+        "1000000_numbers_in_range_1000.txt",
+        "1000000_numbers_in_range_100000.txt"
+    };
+
+    const int runs = 3;
+    std::ofstream resultsFile("results.txt");
+    resultsFile << "Filename, Algorithm, Average (s), Sorted Correctly\n";
+    resultsFile << std::fixed << std::setprecision(6);
+
+    for (const auto& filename : filenames) {
+        std::cout << "Testing file: " << filename << std::endl;
+        auto originalData = loadFile(filename);
+
+        // shellSort
+        std::vector<double> times;
+        bool allCorrect = true;
+
+        for (int i = 0; i < runs; ++i) {
+            auto data = originalData;
+            auto start = std::chrono::high_resolution_clock::now();
+            shellSort(data);
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> duration = end - start;
+            times.push_back(duration.count());
+
+            if (!isSorted(data)) {
+                allCorrect = false;
+            }
+        }
+
+        double average = (times[0] + times[1] + times[2]) / runs;
+        resultsFile << filename << ", shellSort, " << average << ", " << (allCorrect ? "Yes" : "No") << "\n";
+
+        // shellSortKnuth
+        times.clear();
+        allCorrect = true;
+
+        for (int i = 0; i < runs; ++i) {
+            auto data = originalData;
+            auto start = std::chrono::high_resolution_clock::now();
+            shellSortKnuth(data);
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> duration = end - start;
+            times.push_back(duration.count());
+
+            if (!isSorted(data)) {
+                allCorrect = false;
+            }
+        }
+
+        average = (times[0] + times[1] + times[2]) / runs;
+        resultsFile << filename << ", shellSortKnuth, " << average << ", " << (allCorrect ? "Yes" : "No") << "\n";
+
+        // shellSortSedgewick
+        times.clear();
+        allCorrect = true;
+
+        for (int i = 0; i < runs; ++i) {
+            auto data = originalData;
+            auto start = std::chrono::high_resolution_clock::now();
+            shellSortSedgewick(data);
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> duration = end - start;
+            times.push_back(duration.count());
+
+            if (!isSorted(data)) {
+                allCorrect = false;
+            }
+        }
+
+        average = (times[0] + times[1] + times[2]) / runs;
+        resultsFile << filename << ", shellSortSedgewick, " << average << ", " << (allCorrect ? "Yes" : "No") << "\n";
+    }
+
+    resultsFile.close();
+    std::cout << "All tests completed!" << std::endl;
+
+    return 0;
 }
